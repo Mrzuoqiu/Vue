@@ -1,0 +1,27 @@
+<html>
+<head>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="example">
+    <input v-model="parentMsg">
+    <br>
+    <child v-bind:my-message="parentMsg"></child>
+</div>
+</body>
+</html>
+<script>
+    window.onload=function(){
+        //在这里面写Vue.js代码
+        Vue.component('child', {
+            // 声明 props
+            props: ['myMessage'],
+            template: '<span>{{ myMessage }}</span>'
+        })
+        new Vue({
+            el: '#example',
+            parentMsg:"hello world"
+        })
+        //----------------
+    }
+</script>

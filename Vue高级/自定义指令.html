@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="demo" v-my-directive="someValue"></div>
+</body>
+</html>
+<script>
+    Vue.directive('my-directive',{
+        bind:function(){
+            //准备工作
+            //例如，添加事件处理器或者只需要运行一次的高耗任务
+            console.log('my-directive');
+        },
+        update:function(value){
+            this.el.innerHTML = 'value-' + value;
+        }
+    })
+    var demo = new Vue({
+        el:'#demo',
+        data:{
+            someValue:'hello!'
+        }
+    })
+
+</script>
